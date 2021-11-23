@@ -33,6 +33,10 @@ crud.get('/',(req,res) => {
     res.redirect('/emp')
 })
 
+crud.get('/about',(req,res) => {
+    res.render('about',{title: 'About Page'})
+})
+
 //routing
 crud.use('/emp',empRoutes);
 

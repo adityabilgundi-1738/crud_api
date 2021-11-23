@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/head.ejs')  %> <!--including head-->
+    <%- include('./partials/head.ejs')%>
 <body>
-    <%- include('./partials/nav.ejs')  %>
-    
-    
+    <%- include('./partials/nav.ejs')%>
+
+    <div class="blogs content">
+        <h2>All Employee Details</h2>
+        <!--  dynamic content which gets rendered by the server -->
+        <% if(emp.length >0) {%>
+            <% emp.forEach(emp => {%> 
+                <a href="/emp/<%=emp._id %>">
+                    <h2><%= emp.Name %> </h2>
+                    <h3><%= emp.EmployeeNo %> </h3>
+                    <h3><%= emp.email %> </h3>
+                    <h3><%= emp.HolidaysUsed %> </h3>
+                </a>
+            <% }) %>
+        <% } else { %>
+            <p>There are no Employee to display</p>
+        <% } %>   
+
+    </div>
+    <%- include('./partials/footer.ejs')%>
 </body>
 </html>

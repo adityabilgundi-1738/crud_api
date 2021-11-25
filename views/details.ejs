@@ -11,16 +11,25 @@
         <h3><%= emp.HolidaysUsed  %> </h3>
 
 
-        <!-- deleting an employee -->
+        <td><a class = "delete" data-doc="<%= emp._id %>">
+          <img src="/trashcan.svg" alt="">
+        </a></td>
+
+        <!-- added delete and edit buttons -->
+
+        <td><a href="/emp/edit/<%=emp._id%>">Edit</a></td>
+        <td><a class="delete" href="/emp/delete/<%=emp._id%>">Delete</a></td>
         
     </div>
 
     <%- include("./partials/footer.ejs") %>
 
-    <script>
+    <!-- vanilla js ie js without any framework -->
+
+    <script> 
         const trashcan = document.querySelector('a.delete');
         trashcan.addEventListener('click', (e) => {
-          const endpoint = `/blogs/${trashcan.dataset.doc}`;
+          const endpoint = `/emp/${trashcan.dataset.doc}`;
           fetch(endpoint, {
             method: 'DELETE',
           })

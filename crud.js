@@ -40,6 +40,7 @@ crud.get('/about',(req,res) => {
 //routing
 crud.use('/emp',empRoutes);
 
+// crud.put(empUpdate);
 //404 error
 crud.use((req,res) => {//should be in the end, bcs this fires for all '/blah'
     res.status(404).render('404',{title: '404err'})

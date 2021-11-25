@@ -12,4 +12,8 @@ router.get('/:id',emsController.emp_get_details );
 
 router.delete('/:id', emsController.emp_delete);
 
+router
+
+// router.
+
 module.exports = router;

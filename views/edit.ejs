@@ -6,7 +6,7 @@
     <%- include('./partials/nav.ejs')%> 
 
     <div>
-        <form action="/emp" method="post">
+        <form action="/emp/edit/<%= Emp._id %>?_method=PUT" method="POST">
             <label for="Name">Name</label>
             <input type="text" id = "Name" name = "Name" required>
             <label for="EmployeeNo">Employee Number</label>
@@ -21,7 +21,7 @@
             <input type="text" id = "cityName" name = "cityName" required>
             <label for="Aadharno">Aadhar Number</label>
             <input type="text" id = "Aadharno" name = "Aadharno" required>
-            <button>Submit</button>
+            <button>Update</button>
         </form>
     </div>
     

@@ -2,46 +2,34 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const empRoutes = require('./routes/empRoutes');
+const methodOverride = require('method-override')
 
-//express crud
 const crud = express();
 
-//connect to mongo
-const dbURI = 'mongodb+srv://aditya:ohayo1@blogapp.7xb4c.mongodb.net/Crud_WEC?retryWrites=true&w=majority'
-
 mongoose 
-    .connect(dbURI)
+    .connect('mongodb+srv://aditya:ohayo1@blogapp.7xb4c.mongodb.net/Crud_WEC?retryWrites=true&w=majority')
     .then(result =>{
         crud.listen(3000),
         console.log('Connected to DB')
     })
     .catch(err => console.log(err))
 
-//set engines
-crud.set('view engine', 'ejs')
 
-//middleware
+crud.set('view engine', 'ejs')
 crud.use(express.urlencoded({extended: true}));
 crud.use(morgan('dev'));
+crud.use(methodOverride('_method'));
 
-//redirect to routes
 crud.get('/', (req,res) => {
-    res.render('welcome',{ title: 'Emloyee Management System'})
-})
-
-crud.get('/',(req,res) => {
-    res.redirect('/emp')
+    res.render('welcome',{ title: 'Employee Management System'})
 })
 
 crud.get('/about',(req,res) => {
     res.render('about',{title: 'About Page'})
 })
 
-//routing
 crud.use('/emp',empRoutes);
 
-// crud.put(empUpdate);
-//404 error
-crud.use((req,res) => {//should be in the end, bcs this fires for all '/blah'
+crud.use((req,res) => {
     res.status(404).render('404',{title: '404err'})
 })

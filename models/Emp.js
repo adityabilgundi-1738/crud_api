@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
 const empSchema = new mongoose.Schema({
     Name:{
@@ -18,6 +17,18 @@ const empSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    Mobileno:{
+        type: Number,
+        required: true
+    },
+    cityName:{
+        type: String,
+        required: true
+    },
+    Aadharno:{
+        type:String,
+        required: true
+    }
 }, { timestamps: true });
 
 const Emp = mongoose.model('Emp',empSchema)

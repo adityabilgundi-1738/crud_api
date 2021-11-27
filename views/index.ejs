@@ -4,22 +4,24 @@
 <body>
     <%- include('./partials/nav.ejs')%>
 
-    <div class="blogs content">
+    <div>
         <h2>All Employee Details</h2>
         <!--  dynamic content which gets rendered by the server -->
-        <% if(emp.length >0) {%>
-            <% emp.forEach(emp => {%> 
-                <a href="/emp/<%=emp._id %>">
-                    <h2><%= emp.Name %> </h2>
-                    <h3><%= emp.EmployeeNo %> </h3>
-                    <h3><%= emp.email %> </h3>
-                    <h3><%= emp.HolidaysUsed %> </h3>
+        <% if(Emp.length >0) {%>
+            <% Emp.forEach(Emp => {%> 
+                <a href="/emp/details/<%=Emp._id %>">
+                    <h2><%= Emp.Name %> </h2>
+                    <h3><%= Emp.EmployeeNo %> </h3>
+                    <h3><%= Emp.email %> </h3>
+                    <h3><%= Emp.HolidaysUsed %> </h3>
+                    <h3><%= Emp.Mobileno  %> </h3>
+                    <h3><%= Emp.cityName  %> </h3>
+                    <h3><%= Emp.Aadharno  %> </h3>
                 </a>
             <% }) %>
         <% } else { %>
             <p>There are no Employee to display</p>
-        <% } %>   
-
+        <% } %>
     </div>
     <%- include('./partials/footer.ejs')%>
 </body>

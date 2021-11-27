@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <%- include('./partials/head.ejs')%> 
@@ -5,39 +6,23 @@
     <%- include('./partials/nav.ejs')%>
     
     <div>
-        <h2><%= emp.Name %></h2>
-        <h3><%= emp.Email  %> </h3>
-        <h3><%= emp.EmployeeNo %> </h3>
-        <h3><%= emp.HolidaysUsed  %> </h3>
+        <h2><%= Emp.Name %></h2>
+        <h3><%= Emp.EmployeeNo %></h3>
+        <h3><%= Emp.email %></h3>
+        <h3><%= Emp.HolidaysUsed %></h3>
+        <h3><%= Emp.Mobileno %></h3>
+        <h3><%= Emp.cityName %></h3>
+        <h3><%= Emp.Aadharno %></h3>
+    </div>
 
+    <div>
+        <td><a href="/emp/edit/<%=Emp._id%>">Edit</a></td>
 
-        <td><a class = "delete" data-doc="<%= emp._id %>">
-          <img src="/trashcan.svg" alt="">
-        </a></td>
-
-        <!-- added delete and edit buttons -->
-
-        <td><a href="/emp/edit/<%=emp._id%>">Edit</a></td>
-        <td><a class="delete" href="/emp/delete/<%=emp._id%>">Delete</a></td>
-        
+        <form action="/emp/delete/<%= Emp.id %>?_method=DELETE" method="POST">
+            <button>Delete</button>
+        </form>
     </div>
 
     <%- include("./partials/footer.ejs") %>
-
-    <!-- vanilla js ie js without any framework -->
-
-    <script> 
-        const trashcan = document.querySelector('a.delete');
-        trashcan.addEventListener('click', (e) => {
-          const endpoint = `/emp/${trashcan.dataset.doc}`;
-          fetch(endpoint, {
-            method: 'DELETE',
-          })
-          .then(response => response.json())
-          .then(data => window.location.href = data.redirect)
-          .catch(err => console.log(err));
-        });
-    </script>
-
 </body>
 </html>

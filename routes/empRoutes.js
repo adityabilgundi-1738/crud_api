@@ -2,18 +2,18 @@ const express = require('express');
 const router = express.Router();
 const emsController = require('../controllers/emsController');
 
-router.get('/create',emsController.emp_create_get);
-
 router.get('/',emsController.emp_index);
+
+router.get('/create',emsController.emp_create_page);
 
 router.post('/',emsController.emp_create_post);
 
-router.get('/:id',emsController.emp_get_details );
+router.get('/details/:id',emsController.emp_get_details );
 
-router.delete('/:id', emsController.emp_delete);
+router.delete('/delete/:id', emsController.emp_delete);
 
-router
+router.get('/edit/:id',emsController.emp_get_update_form);
 
-// router.
+router.put('/edit/:id',emsController.emp_update_post);
 
 module.exports = router;

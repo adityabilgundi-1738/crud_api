@@ -9,18 +9,24 @@
         <form action="/emp/edit/<%= Emp._id %>?_method=PUT" method="POST">
             <label for="Name">Name</label>
             <input type="text" id = "Name" name = "Name" required>
+
             <label for="EmployeeNo">Employee Number</label>
             <input type="number" id = "EmployeeNo" name = "EmployeeNo" required>
+
             <label for="email">Employee Email</label>
             <input type="text" id = "email" name = "email" required>
+
             <label for="HolidaysUsed">Holidays Used</label>
-            <input type="text" id = "HolidaysUsed" name = "HolidaysUsed" required>
+            <input type="text" id = "HolidaysUsed" name = "HolidaysUsed">
+
             <label for="Mobileno">Mobile Number</label>
             <input type="text" id = "Mobileno" name = "Mobileno" required>
+
             <label for="cityName">City Name</label>
-            <input type="text" id = "cityName" name = "cityName" required>
+            <input type="text" id = "cityName" name = "cityName" >
+
             <label for="Aadharno">Aadhar Number</label>
-            <input type="text" id = "Aadharno" name = "Aadharno" required>
+            <input type="text" id = "Aadharno" name = "Aadharno" >
             <button>Update</button>
         </form>
     </div>

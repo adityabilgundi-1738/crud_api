@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const empSchema = new mongoose.Schema({
     Name:{
         type: String,
@@ -15,7 +14,7 @@ const empSchema = new mongoose.Schema({
     },
     HolidaysUsed:{
         type: Number,
-        required: true
+        // required: true
     },
     Mobileno:{
         type: Number,
@@ -23,11 +22,11 @@ const empSchema = new mongoose.Schema({
     },
     cityName:{
         type: String,
-        required: true
+        // required: true
     },
     Aadharno:{
         type:String,
-        required: true
+        // required: true
     }
 }, { timestamps: true });
 

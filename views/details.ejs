@@ -16,7 +16,10 @@
     </div>
 
     <div>
-        <td><a href="/emp/edit/<%=Emp._id%>">Edit</a></td>
+
+        <form action="/emp/edit/<%=Emp._id%>">
+            <button>Edit Employee</button>
+        </form>
 
         <form action="/emp/delete/<%= Emp.id %>?_method=DELETE" method="POST">
             <button>Delete</button>

@@ -46,7 +46,7 @@ const emp_delete = async (req,res) => {
 }
 
 const emp_update_post = async (req,res) => {
-    await Emp.findByIdAndUpdate(req.params.id,{$set: {},},req.body,{
+    await Emp.findByIdAndUpdate(req.params.id,/*{$set: {},},*/req.body,{
         new: true
     })
         //await Emp.findByIdAndUpdate(filters for search, Content to be uploaded)

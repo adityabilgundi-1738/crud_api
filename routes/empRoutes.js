@@ -14,6 +14,6 @@ router.delete('/delete/:id', emsController.emp_delete);
 
 router.get('/edit/:id',emsController.emp_get_update_form);
 
-router.put('/edit/:id',emsController.emp_update_post);
+router.patch('/edit/:id',emsController.emp_update_post);
 
 module.exports = router;

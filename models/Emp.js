@@ -10,25 +10,21 @@ const empSchema = new mongoose.Schema({
     },
     email:{
         type: String,
-        required: true,
+        required: true
     },
     HolidaysUsed:{
         type: Number,
-        // required: true
     },
     Mobileno:{
         type: Number,
         required: true
     },
     cityName:{
-        type: String,
-        // required: true
+        type: String
     },
     Aadharno:{
-        type:String,
-        // required: true
+        type:String
     }
 }, { timestamps: true });
 
-const Emp = mongoose.model('Emp',empSchema)
-module.exports = Emp;
+module.exports = mongoose.model('Emp',empSchema);

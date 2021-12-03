@@ -77,13 +77,11 @@ var rootValue = {
                 console.log(err)
             })
     },
-    oneEmp: (args) => {//nope
+    oneEmp: (args) => {//works
         return Emp
-            .findById(args._id)
+            .findOne({_id: args._id})
             .then(result => {
-                return result.map(result => {
-                    return {...result._doc, _id: result.id}
-                })
+                return {...result._doc}
             })
             .catch(err => {
                 console.log(err)
@@ -109,17 +107,18 @@ var rootValue = {
                 console.log(err);
             })
     },
-    deleteEmployee: (args) => {//nope
+    deleteEmp: (args) => {//works
         return Emp
-            .findByIdAndDelete(args._id)
-            .then(emp => {
-                return {...emp._doc, _id: emp.id}
+            .findByIdAndRemove({_id: args._id})
+            .then(result => {
+                console.log(result)
+                return {...result._doc}
             })
             .catch(err => {
                 console.log(err);
             })
     },
-    editEmployee: (args) => {//nope
+    editEmp: (args) => {//nope
         const updEmp = new Emp({
             Name: args.createEmployee.Name,
             EmployeeNo: args.createEmployee.EmployeeNo,
@@ -129,8 +128,8 @@ var rootValue = {
             cityName: args.createEmployee.cityName,
             Aadharno: args.createEmployee.Aadharno
         });
-        return updEmp
-            .findByIdAndUpdate(args._id)
+        return Emp
+            .findByIdAndUpdate({_id: args._id, update: updEmp})
             .then(result => {
                 console.log(result);
                 return{...result._doc}

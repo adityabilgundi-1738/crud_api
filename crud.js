@@ -48,6 +48,20 @@ type Employee{
     Aadharno: String!
 }
 
+input EmployeeInput2{
+    Name: String,
+    EmployeeNo: Int,
+    email: String,
+    HolidaysUsed: Int,
+    Mobileno: String,
+    cityName: String,
+    Aadharno: String
+}
+
+input id{
+    _id: ID!
+}
+
 type RootQuery{
     emp: [Employee!]!
     oneEmp(_id: ID!): Employee
@@ -56,7 +70,7 @@ type RootQuery{
 type RootMutation{
     createEmp(createEmployee: EmployeeInput): Employee
     deleteEmp(_id: ID!): Employee
-    editEmp(_id: ID! ,editEmployee: EmployeeInput): Employee
+    editEmp(_id: id, editEmployee:EmployeeInput2!): Employee
 }
 
 schema{
@@ -65,7 +79,7 @@ schema{
 }
 `)
 var rootValue = {
-    emp: () => {//works
+    emp: () => {
         return Emp
             .find()
             .then(emp => {
@@ -77,7 +91,7 @@ var rootValue = {
                 console.log(err)
             })
     },
-    oneEmp: (args) => {//works
+    oneEmp: (args) => {
         return Emp
             .findOne({_id: args._id})
             .then(result => {
@@ -87,7 +101,7 @@ var rootValue = {
                 console.log(err)
             })
     },
-    createEmp: (args) => {//works
+    createEmp: (args) => {
         const newEmp = new Emp({
             Name: args.createEmployee.Name,
             EmployeeNo: args.createEmployee.EmployeeNo,
@@ -118,27 +132,27 @@ var rootValue = {
                 console.log(err);
             })
     },
-    editEmp: (args) => {//nope
-        const updEmp = new Emp({
-            Name: args.createEmployee.Name,
-            EmployeeNo: args.createEmployee.EmployeeNo,
-            email: args.createEmployee.email,
-            HolidaysUsed: args.createEmployee.HolidaysUsed,
-            Mobileno: args.createEmployee.Mobileno,
-            cityName: args.createEmployee.cityName,
-            Aadharno: args.createEmployee.Aadharno
-        });
+    editEmp: (parent,args,context,info) => {
+        Emp = new Emp()
+
         return Emp
-            .findByIdAndUpdate({_id: args._id, update: updEmp})
-            .then(result => {
-                console.log(result);
-                return{...result._doc}
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        .findByIdAndUpdate({_id: args._id}, {$set: { 
+            Name: args.editEmployee.Name, 
+            EmployeeNo: args.editEmployee.EmployeeNo, 
+            email: args.editEmployee.email, 
+            HolidaysUsed:args.editEmployee.HolidaysUsed, 
+            Mobileno:args.editEmployee.Mobileno, 
+            cityName: args.editEmployee.cityName, 
+            Aadharno:args.editEmployee.Aadharno
+        }}).then(result => {
+            console.log(result)
+            return{...result._doc}
+        }).catch(err => {
+            console.log(err);
+        })
     }
 }
+        
 
 // const EmpSchema = require('./gqlsrc/schema')
 crud.use('/graphql', expressGraphQL({

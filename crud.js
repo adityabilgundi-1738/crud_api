@@ -16,7 +16,6 @@ crud.use(express.urlencoded({extended: true}))
 crud.use(morgan('dev'))
 crud.use(bodyParser.json())
 
-
 mongoose 
     .connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@blogapp.7xb4c.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`)
     .then(result =>{
@@ -132,17 +131,16 @@ var rootValue = {
                 console.log(err);
             })
     },
-    editEmp: (parent,args,context,info) => {
+    editEmp: (args) => {
         Emp = new Emp()
-
         return Emp
         .findByIdAndUpdate({_id: args._id}, {$set: { 
-            Name: args.editEmployee.Name, 
-            EmployeeNo: args.editEmployee.EmployeeNo, 
-            email: args.editEmployee.email, 
-            HolidaysUsed:args.editEmployee.HolidaysUsed, 
-            Mobileno:args.editEmployee.Mobileno, 
-            cityName: args.editEmployee.cityName, 
+            Name: args.editEmployee.Name,
+            EmployeeNo: args.editEmployee.EmployeeNo,
+            email: args.editEmployee.email,
+            HolidaysUsed:args.editEmployee.HolidaysUsed,
+            Mobileno:args.editEmployee.Mobileno,
+            cityName: args.editEmployee.cityName,
             Aadharno:args.editEmployee.Aadharno
         }}).then(result => {
             console.log(result)
@@ -152,8 +150,6 @@ var rootValue = {
         })
     }
 }
-        
-
 // const EmpSchema = require('./gqlsrc/schema')
 crud.use('/graphql', expressGraphQL({
     schema: schema,

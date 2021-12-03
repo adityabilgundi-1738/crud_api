@@ -30,6 +30,28 @@ npm install
 ```sh
 nodemon crud
 ```
+## Link to video(s)
+https://drive.google.com/drive/folders/1pm5QShfxacbQTXSdDOSzgjTsQkDHKKke?usp=sharing
+
+## Procedure to Run
+To Run this project, fork it using git fork.
+after opening this project on your favorite IDE, RUN `npm install` then RUN `nodemon crud` in the terminal.
+navigate to http://localhost:3000/graphql for the `GraphiQL` Interface.
+or else Navigate to http://localhost:3000 for the GUI.
+
+The GraphiQL interface can be easily used as it has suggestions.
+use `Ctrl + Spacebar` at any line to get appropriate Suggestions.
+The GUI is easy to Navigate with a Navbar on every Page.
+
+## Features
+This Project Repo has two modes of user interaction.
+
+1. A EJS Powered GUI where the Employer can navigate through and perform CRUD operations.
+2. A graphQL powered GraphiQL interface where the Employer can perform CRUD operations using Query and Mutation.
+
+
+## Technologies Used
+EJS, Javascript, MongoDB, GraphQL. 
 
 ## Referred Sources:
 ```

@@ -15,7 +15,7 @@
   </a>
 </p>
 
-> Build a Restful CRUD API for a Employee Management System application using Node.js, Express and MongoDB.
+> Build a Restful CRUD API for a Employee Management System application using Node.js, GraphQL, Express and MongoDB.
 
 ### 🏠 [Homepage](https://github.com/adityabilgundi-1738/crud_api#readme)
 
@@ -28,7 +28,14 @@ npm install
 ## Usage
 
 ```sh
-npm run start
+nodemon crud
+```
+
+## Referred Sources:
+```
+Youtube: Net Ninja
+Youtube: Academind
+https://github.com/tariqulislam/express-graphql-with-mongoose
 ```
 
 ## Author
